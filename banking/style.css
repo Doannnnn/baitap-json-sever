@@ -1,0 +1,107 @@
+.bg-body-tertiary {
+    background-color: #299be4 !important;
+}
+
+.navbar-brand {
+    font-size: 36px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.navbar-brand:hover {
+    color: #fff;
+}
+
+table thead tr th {
+    background-color: #4caf50 !important;
+    color: #fff !important;
+    text-align: center !important;
+}
+
+.table>:not(caption)>*>* {
+    text-align: center !important;
+}
+
+footer {
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+}
+
+footer.success {
+    background-color: #d1e7dd;
+}
+
+footer.error {
+    background-color: #f8d7da;
+}
+
+.notification p {
+    font-weight: 500;
+}
+
+.notification p.success {
+    color: #246040;
+}
+
+.notification p.error {
+    color: #b05965;
+}
+
+.form-label {
+    font-weight: bold !important;
+}
+
+.error-message {
+    margin: 5px;
+    color: #fa0d0d;
+}
+
+.error {
+    border: 1px solid #fa0d0d;
+}
+
+
+.loader-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: none;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.loader {
+    left: 50%;
+    top: 40%;
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    z-index: 9999;
+    border: 6px solid transparent;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+
