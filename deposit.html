@@ -19,19 +19,19 @@
                 <div class="container-fluid">
                     <a class="navbar-brand">List Of Customers</a>
                     <div class="d-flex" style="gap: 10px;">
-                        <a href="deposit.html">
-                            <button class="btn btn-outline-light" type="button">
-                                <i class="fas fa-plus"></i>
-                                Deposit Histories
-                            </button>
-                        </a>
-                        <a href="transfer.html">
+                        <a href="/transfer.html">
                             <button class="btn btn-outline-light" type="button">
                                 <i class="fas fa-history"></i>
                                 Transfer Histories
                             </button>
                         </a>
-                        <a href="./index.html">
+                        <a href="/withdraw.html">
+                            <button class="btn btn-outline-light" type="button">
+                                <i class="fas fa-minus"></i>
+                                Withdraw Histories
+                            </button>
+                        </a>
+                        <a href="/index.html">
                             <button class="btn btn-outline-light" type="button">
                                 <i class="fas fa-list-ul"></i>
                                 Customers List
@@ -49,10 +49,10 @@
                         <th>#</th>
                         <th>Full Name</th>
                         <th>Transaction Amount ($)</th>
-                        <th>Date Withdaw</th>
+                        <th>Date Deposit</th>
                     </tr>
                 </thead>
-                <tbody id="tbWithdraw">
+                <tbody id="tbDeposit">
 
                 </tbody>
             </table>
@@ -63,25 +63,25 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <script>
-            const bodyWithdraw = document.getElementById("tbWithdraw");
+            const bodyDeposit = document.getElementById("tbDeposit");
 
-            async function fetchAllWithdraw() {
-                const withdraws = await fetch("http://localhost:3300/withdraws");
-                const withdraw = await withdraws.json();
-                return withdraw;
+            async function fetchAllDeposit() {
+                const deposits = await fetch("http://localhost:3300/deposits");
+                const deposit = await deposits.json();
+                return deposit;
             }
 
-            const getAllWithdraw = async () => {
-                const withdraw = await fetchAllWithdraw();
-                console.log(withdraw);
+            const getAllDeposit = async () => {
+                const deposit = await fetchAllDeposit();
+                console.log(deposit);
 
-                withdraw.forEach(item => {
-                    const str = renderWithdraw(item);
-                    bodyWithdraw.innerHTML += str;
+                deposit.forEach(item => {
+                    const str = renderDeposit(item);
+                    bodyDeposit.innerHTML += str;
                 });
             };
 
-            const renderWithdraw = (obj) => {
+            const renderDeposit = (obj) => {
                 return `
                     <tr>
                         <td>${obj.id}</td>
@@ -92,7 +92,7 @@
                 `;
             };
 
-            getAllWithdraw();
+            getAllDeposit();
         </script>
 
 </body>

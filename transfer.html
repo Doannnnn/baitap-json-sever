@@ -19,19 +19,19 @@
                 <div class="container-fluid">
                     <a class="navbar-brand">List Of Customers</a>
                     <div class="d-flex" style="gap: 10px;">
-                        <a href="transfer.html">
+                        <a href="/deposit.html">
                             <button class="btn btn-outline-light" type="button">
-                                <i class="fas fa-history"></i>
-                                Transfer Histories
+                                <i class="fas fa-plus"></i>
+                                Deposit Histories
                             </button>
                         </a>
-                        <a href="withdraw.html">
+                        <a href="/withdraw.html">
                             <button class="btn btn-outline-light" type="button">
                                 <i class="fas fa-minus"></i>
                                 Withdraw Histories
                             </button>
                         </a>
-                        <a href="./index.html">
+                        <a href="/index.html">
                             <button class="btn btn-outline-light" type="button">
                                 <i class="fas fa-list-ul"></i>
                                 Customers List
@@ -47,12 +47,16 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Full Name</th>
-                        <th>Transaction Amount ($)</th>
-                        <th>Date Deposit</th>
+                        <th>Sender Name</th>
+                        <th>Recipient Name</th>
+                        <th>Transfer Amount ($)</th>
+                        <th>Fees</th>
+                        <th>Fees Amount</th>
+                        <th>Transaction Amount</th>
+                        <th>Date Transfer</th>
                     </tr>
                 </thead>
-                <tbody id="tbDeposit">
+                <tbody id="tbTransfer">
 
                 </tbody>
             </table>
@@ -63,36 +67,40 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <script>
-            const bodyDeposit = document.getElementById("tbDeposit");
+            const bodyTransfer = document.getElementById("tbTransfer");
 
-            async function fetchAllDeposit() {
-                const deposits = await fetch("http://localhost:3300/deposits");
-                const deposit = await deposits.json();
-                return deposit;
+            async function fetchAllTransfer() {
+                const transfers = await fetch("http://localhost:3300/transfers");
+                const transfer = await transfers.json();
+                return transfer;
             }
 
-            const getAllDeposit = async () => {
-                const deposit = await fetchAllDeposit();
-                console.log(deposit);
+            const getAllTransfer = async () => {
+                const transfer = await fetchAllTransfer();
+                console.log(transfer);
 
-                deposit.forEach(item => {
-                    const str = renderDeposit(item);
-                    bodyDeposit.innerHTML += str;
+                transfer.forEach(item => {
+                    const str = renderTransfer(item);
+                    bodyTransfer.innerHTML += str;
                 });
             };
 
-            const renderDeposit = (obj) => {
+            const renderTransfer = (obj) => {
                 return `
                     <tr>
                         <td>${obj.id}</td>
-                        <td>${obj.fullName}</td>
+                        <td>${obj.senderName}</td>
+                        <td>${obj.recipientName}</td>
+                        <td>${obj.transferAmount}</td>
+                        <td>${obj.fees}</td>
+                        <td>${obj.feesAmount}</td>
                         <td>${obj.transactionAmount}</td>
                         <td>${obj.date}</td>
                     </tr>
                 `;
             };
 
-            getAllDeposit();
+            getAllTransfer();
         </script>
 
 </body>
